@@ -9,6 +9,18 @@
 {{range .}}
 
 <!-- PUT YOUR CODE HERE TO SHOW THE DATA-->
+{{.Fall.Term}}: {{.AcaYear}}<br>
+{{range .Fall.Courses}}<br>
+{{.Name}} - {{.Number}} - {{.Units}}
+{{end}}
+{{.Spring.Term}}: {{.AcaYear}}<br>
+{{range .Spring.Courses}}<br>
+{{.Name}} - {{.Number}} - {{.Units}}
+{{end}}
+{{.Summer.Term}}: {{.AcaYear}}<br>
+{{range .Summer.Courses}}<br>
+{{.Name}} - {{.Number}} - {{.Units}}
+{{end}}
 
 {{end}}
 
