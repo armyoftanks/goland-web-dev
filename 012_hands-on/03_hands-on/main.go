@@ -1,37 +1,51 @@
 package main
 
 import (
-  "text/template"
-  "os"
-  "log"
+	"log"
+	"os"
+	"text/template"
 )
+
+type Calihotels []hotel
+
+type hotel struct {
+	Name, Address, City, Zip, Region string
+}
 
 var tpl *template.Template
 
-type Calihotels struct {
-  Hotels []hotel
+func init() {
+	tpl = template.Must(template.ParseFiles("tpl.gohtml"))
 }
 
-type hotel struct {
-  Name string
-  Adress string
-  City string
-  Zip int
-  Region string
-}
+func main() {
 
-func init {
-  tpl = template.MUST(template.ParseFiles("tpl.gohtml"))
-}
+	hotels := Calihotels{
+		hotel{
+			Name:    "name1",
+			Address: "address1",
+			City:    "city1",
+			Zip:     "11223",
+			Region:  "Southern",
+		},
+		hotel{
+			Name:    "name2",
+			Address: "address2",
+			City:    "city2",
+			Zip:     "11223",
+			Region:  "Central",
+		},
+		hotel{
+			Name:    "name3",
+			Address: "address3",
+			City:    "city3",
+			Zip:     "11223",
+			Region:  "Northern",
+		},
+	}
 
-func main {
-
-  hotels := []Calihotels {
-    hotel{"name1", "address1", "city1", 11223, "Southern"},
-    hotel{"name2", "address2", "city2", 11223, "Central"},
-    hotel{"name3", "address3", "city3", 11223, "Northern"},
-  }
-
-  
-
+	err := tpl.Execute(os.Stdout, hotels)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
