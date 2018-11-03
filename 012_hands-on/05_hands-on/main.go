@@ -1,13 +1,14 @@
 package main
 
 import (
+	"log"
 	"os"
 	"text/template"
 )
 
 type foods struct {
-	Food  []string
-	Drink []string
+	Food  string
+	Drink string
 }
 
 type tod struct {
@@ -30,14 +31,19 @@ func init() {
 func main() {
 
 	menu := menus{
-		Breakfast: {
-			foods{
-				Food:  "bacon and eggs",
-				Drink: "coffee or OJ",
+		tod{
+			Time: {
+				Breakfast:,
+				Foods{
+					Food:  "bacon and eggs",
+					Drink: "coffee or OJ",
+				},
 			},
 		},
 	}
 
 	err := tpl.Execute(os.Stdout, menu)
-
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
