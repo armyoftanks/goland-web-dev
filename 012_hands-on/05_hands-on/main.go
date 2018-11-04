@@ -17,9 +17,7 @@ type tod struct {
 }
 
 type menus struct {
-	Breakfast tod
-	Lunch     tod
-	Dinner    tod
+	Tod tod
 }
 
 var tpl *template.Template
@@ -32,12 +30,10 @@ func main() {
 
 	menu := menus{
 		tod{
-			Time: {
-				Breakfast:,
-				Foods{
-					Food:  "bacon and eggs",
-					Drink: "coffee or OJ",
-				},
+			Time: "Breakfast: ",
+			foods{
+				Food:  "bacon and eggs",
+				Drink: "coffee or OJ",
 			},
 		},
 	}
