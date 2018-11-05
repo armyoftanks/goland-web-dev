@@ -6,18 +6,14 @@ import (
 	"text/template"
 )
 
-type foods struct {
+type items struct {
 	Food  string
 	Drink string
 }
 
-type tod struct {
+type menu struct {
 	Time  string
-	Foods []foods
-}
-
-type menus struct {
-	Tod tod
+	Foods []itmes
 }
 
 var tpl *template.Template
@@ -28,14 +24,11 @@ func init() {
 
 func main() {
 
-	menu := menus{
-		tod{
-			Time: "Breakfast: ",
-			foods{
-				Food:  "bacon and eggs",
-				Drink: "coffee or OJ",
-			},
-		},
+	menus := []menu{
+		Time: "Breakfast",
+		Foods: []items{
+			
+		}
 	}
 
 	err := tpl.Execute(os.Stdout, menu)
